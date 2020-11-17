@@ -32,14 +32,16 @@ query {
       }
       nodes {
         name
-        releases(last:1) {
-          totalCount
-          nodes {
-            name
-            publishedAt
-            url
-          }
-        }
+        updatedAt
+        url
+        # releases(last:1) {
+        #   totalCount
+        #   nodes {
+        #     name
+        #     publishedAt
+        #     url
+        #   }
+        # }
       }
     }
   }
@@ -65,21 +67,17 @@ def fetch_releases(oauth_token):
         print(json.dumps(data, indent=4))
         print()
         for repo in data["data"]["viewer"]["repositories"]["nodes"]:
-            if repo["releases"]["totalCount"] and repo["name"] not in repo_names:
-                repos.append(repo)
-                repo_names.add(repo["name"])
-                releases.append(
-                    {
-                        "repo": repo["name"],
-                        "release": repo["releases"]["nodes"][0]["name"]
-                        .replace(repo["name"], "")
-                        .strip(),
-                        "published_at": repo["releases"]["nodes"][0][
-                            "publishedAt"
-                        ].split("T")[0],
-                        "url": repo["releases"]["nodes"][0]["url"],
-                    }
-                )
+            print(json.dumps(repo, indent=4))
+            # if repo["name"] not in repo_names:
+            repos.append(repo)
+            repo_names.add(repo["name"])
+            releases.append(
+                {
+                    "repo": repo["name"],
+                    "published_at": repo["updatedAt"],
+                    "url": repo["url"]
+                }
+            )
         has_next_page = data["data"]["viewer"]["repositories"]["pageInfo"][
             "hasNextPage"
         ]
@@ -92,7 +90,7 @@ if __name__ == "__main__":
     releases.sort(key=lambda r: r["published_at"], reverse=True)
     md = "\n".join(
         [
-            "* [{repo} {release}]({url}) - {published_at}".format(**release)
+            "* [{repo}]({url}) - {published_at}".format(**release)
             for release in releases[:5]
         ]
     )
