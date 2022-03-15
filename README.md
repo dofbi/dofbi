@@ -1,3 +1,4 @@
+![cover](/assets/cover.jpg)
 ## Hello there 👋
 
 I'm Mamadou Diagne, a Civic hacker frome Dakar, Senegal 🇸🇳 .
