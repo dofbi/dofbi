@@ -3,7 +3,7 @@
 
 <h2 align="center"> Hello there 👋 </h2>
 <p align="center">
-  <samp>I'm Mamadou Diagne, a Civic hacker frome Dakar, Senegal 🇸🇳 .</samp>
+  <samp>I'm Mamadou Diagne, a Civic hacker from Dakar, Senegal 🇸🇳 .</samp>
 </p>
 
 <h2 align="center">💬 My Blog Articles</h2>
