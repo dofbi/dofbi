@@ -1,0 +1,28 @@
+[user]
+        name = Mamadou Diagne
+        email = genova@dofbi.com
+[color]
+        ui = auto
+[alias]
+        # Git Commit, Add all and Push — in one step.
+        cap = "!f() { git commit -m \"$@\"; }; f"
+        # NEW.
+        feat = "!f() { git cap \"✨ feat($1): $2\"; }; f"
+        # STYLE.
+        style = "!f() { git cap \"💄 style($1): $2\"; }; f"
+        # FIX.
+        fix = "!f() { git cap \"🐛 fix($1): $2\"; }; f"
+        # CHORE.
+        chore = "!f() { git cap \"👷 chore($1): $2\"; }; f"
+        # DOC.
+        doc = "!f() { git cap \"📝 doc($1): $2\"; }; f"
+        # TEST.
+        tst = "!f() { git cap \"✅ test($1): $2\"; }; f"
+        # REFACTOR
+        ref = "!f() { git cap \"♻️  refactor($1): $2\"; }; f"
+        # INITIAL COMMIT
+        int = "!f() { git cap \"🎉 int($1): $2\"; }; f"
+[commit]
+        template = /home/genova/.gitmessage.txt
+[init]
+    defaultBranch = main
